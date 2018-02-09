@@ -29,13 +29,11 @@ app.set('view engine', 'handlebars');
 var router = require("./controllers/controllers.js");
 app.use("/", router);
 
-// Connect to localhost if not a production environment
-if(process.env.NODE_ENV == 'production'){
-	mongoose.connect();
-}
-else{
-	mongoose.connect("mongodb://localhost/NewScraper");
-}
+// Connect to localhost
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost/newsfinder", {
+  useMongoClient: true
+});
 
 // Database config with mongoose
 var db = mongoose.connection;
@@ -45,7 +43,7 @@ var db = mongoose.connection;
 	});
 	// Once logged in to the db through mongoose, log a success message
 	db.once("open", function() {
-	  console.log("M connection successful.");
+	  console.log(" connection successful.");
 	});
 
 

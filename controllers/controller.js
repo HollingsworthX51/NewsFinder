@@ -21,9 +21,10 @@ var Article = require("../models/article.js");
 			var $ = cheerio.load(html);
 			// //array to hold scraped data
 			var articles = [];
+
 //*loop through the articles and save to the database
 
-			$("h4.title").each(function (i, element) {
+			$("h1.title").each(function (i, element) {
 				var link = $(element).children().attr("href");
 				var title = $(element).children().text();
 
@@ -51,7 +52,7 @@ router.post("/save", function(req,res) {
 			console.log(error);
 		}
 		else {
-			Article.findOneAndUpdate({}, {$push: { "h4.title": doc.title} }, {"link": doc.link}, function (error, saved ) {
+			Article.findOneAndUpdate({}, {$push: { "h1.title": doc.title} }, {"link": doc.link}, function (error, saved ) {
 				if(error) {
 					res.send(error);
 				}	
@@ -63,6 +64,7 @@ router.post("/save", function(req,res) {
 	});
 });
 	
+//route to get saved articles
 
 router.get("/saved", function (req, res) {
 	Article.find({}, function(error, doc){
