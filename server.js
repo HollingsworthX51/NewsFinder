@@ -5,13 +5,13 @@
 
 
 // Dependencies
-var cheerio = require('cheerio');
-var request = require('request');
-var express = require("express");
+var express = require('express');
 var exphbs = require('express-handlebars');
-var mongoose = require('mongoose');
-var mongojs = require("mongojs");
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var mongojs	= require('mongojs');
+var request = require('request'); 
+var cheerio = require('cheerio'); 
 
 //start express
 var app = express();
