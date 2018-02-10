@@ -6,9 +6,9 @@ var app = express();
 var mongoose = require("mongoose");
 mongoose.Promise = Promise;
 
-// var db = require("../models/");
+var db = require("../models/");
 
-var Article = require("../models/article.js");
+//var Article = require("../models/article.js");
 
 //load main page
 router.get("/", function (req, res) {
