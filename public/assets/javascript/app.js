@@ -4,16 +4,16 @@
 $(document).on("click", ".saveBtn", function () {
 
 
-    var savedArticle = {
+    var Article = {
         title: $(this).parent().siblings("div").children("a.titleLink").text(),
         link: $(this).parent().siblings("div").children("a.titleLink").attr("href")
     };
 
-    console.log(savedArticle);
+    console.log(Article);
 
     $.ajax({
         method: "POST",
-        data: savedArticle,
+        data: Article,
         url: "/saved"
     }).done(function () {
 

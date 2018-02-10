@@ -15,6 +15,7 @@ router.get("/", function (req, res) {
 	res.render("index");
 });
 //scrape doubtfulnews for articles
+
 var articles = [];
 
 router.get("/submit-scrape", function (req, res) {
@@ -75,7 +76,7 @@ router.post("/save", function (req, res) {
 
 //route to get saved articles
 
-router.get("/saved", function (req, res) {
+router.post("/saved", function (req, res) {
 	Article.find({}, function (error, doc) {
 		if (error) {
 			res.send(error);
