@@ -1,9 +1,9 @@
-{{#each articles}}
+{{#each article}}
 <form action="/saved" method="post">
 	<h5 class="card-title">{{this.title}}</h5>
     	<h6>{{this.link}}</h6>
     	<br>
-    	<button type="submit" href= "/save" class="saveBtn">Save Article</button>
+    	<button type="submit" href= "/saved" class="saveBtn">Save Article</button>
         <button type="submit" href= "/note" class="commentBtn">Comment</button>
 </form>
     	<hr>
