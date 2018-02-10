@@ -27,7 +27,7 @@ router.get("/submit-scrape", function (req, res) {
 
 		//*loop through the articles and save to the database
 
-		$("h1.title").each(function (i, element) {
+		$("h1.entry-title").each(function (i, element) {
 			var link = $(element).children().attr("href");
 			var title = $(element).children().text();
 
@@ -58,7 +58,7 @@ router.post("/save", function (req, res) {
 		} else {
 			Article.findOneAndUpdate({}, {
 				$push: {
-					"h1.title": doc.title
+					"h1.entry-title": doc.title
 				}
 			}, {
 				"link": doc.link
