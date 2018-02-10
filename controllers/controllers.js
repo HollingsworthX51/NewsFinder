@@ -15,12 +15,15 @@ var Article = require("../models/article.js");
 		res.render("index");
 	});
 //scrape doubtfulnews for articles
+var articles = [];
+
 	router.get("/submit-scrape", function(req, res) {
+		
 		request("http://www.doubtfulnews.com/", function (error, response, html) {
 			//save the loaded HTML here
 			var $ = cheerio.load(html);
 			// //array to hold scraped data
-			var articles = [];
+			
 
 //*loop through the articles and save to the database
 
