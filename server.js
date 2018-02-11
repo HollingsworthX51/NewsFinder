@@ -30,10 +30,18 @@ var router = require("./controllers/controllers.js");
 app.use("/", router);
 
 // Connect to localhost
-mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/newsfinder", {
-  useMongoClient: true
-});
+//mongoose.Promise = Promise;
+//mongoose.connect("mongodb://localhost/newsfinder", {
+  //useMongoClient: true
+//});
+
+// Connect to localhost if not a production environment
+if(process.env.NODE_ENV == 'production'){
+	mongoose.connect('mongodb://heroku_d65s8pdk:bgt9fq0jibmpto6l8hne11roc7@ds231588.mlab.com:31588/heroku_d65s8pdk');
+}
+else{
+	mongoose.connect("mongodb://localhost/newsfinder");
+}
 
 // Database config with mongoose
 var db = mongoose.connection;
